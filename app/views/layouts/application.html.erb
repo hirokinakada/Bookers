@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+<header class=" navbar navbar-fixed-top navbar-inverse">
+
+  <div class="container">
+
+    <nav class="nav navbar-nav navbar-left" style="color: white; font-size: 20px;">
+      <span>Bookers</span>
+    </nav>
+
+    <nav>
+  <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+
+
+      <li><%= link_to user_path(current_user),class:'btn' do %>
+        <i class="glyphicon glyphicon-home home">  Home</i><% end %>
+      </li>
+
+      <li><%= link_to users_path,class:'btn' do %>
+        <i class="glyphicon glyphicon-user users">  Users</i>
+      </li><% end %>
+
+
+      <li><%= link_to books_path ,class:'btn' do %>
+        <i class="glyphicon glyphicon-book books">  Books</i><% end %>
+      </li>
+
+      <li><%= link_to destroy_user_session_path, method: :delete, class:'btn' do %>
+        <i class="glyphicon glyphicon-log-out logout">Logout</i><% end %>
+      </li>
+
+
+   <% else %>
+
+<%#<li><%= link_to "Home",root_path, class:'btn glyphicon glyphicon-home' %><%#/li#%><%#こっちの方がベスト#%>
+
+      <li><%= link_to root_path, class:'btn' do %>
+        <i class="glyphicon glyphicon-home home">  Home</i><% end %>
+      </li>
+
+      <li><%= link_to home_about_path,class:'btn' do %>
+        <i class="glyphicon glyphicon-link about">  About</i><% end %>
+      </li>
+
+      <li><%= link_to new_user_registration_path,class:'btn' do %>
+        <i class="glyphicon glyphicon-edit sign_up">  sign up</i><% end %>
+      </li>
+
+      <li>
+        <%= link_to new_user_session_path,class:'btn' do %>
+        <i class="glyphicon glyphicon-log-in sign_in">  Login</i><% end %>
+      </li>
+
+
+    <% end %>
+  </ul>
+</nav>
+  </div>
+</header>
+
+
+    <%= yield %>
+
+   <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+</div>
+    </footer>
+  </body>
+</html>

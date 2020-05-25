@@ -1,0 +1,43 @@
+<div class="body" style="margin-top: 51px">
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h2>User info</h2>
+
+<% if @user.errors.any? %>
+<div>
+    <h2 style="color: red">2 errors prohibited this user from begin saved:</h2>
+    <ul style="color: red">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+</div>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+
+ <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name,presence: true %>
+  </div>
+
+
+<div class="field">
+
+    <label>Image</label>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+</div> 
+
+
+ <div class="field">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction %>
+  </div>
+
+
+    <%= f.submit "Update User" %>
+<% end %>
+
+
+</div>
+</div>

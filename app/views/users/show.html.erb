@@ -1,0 +1,38 @@
+<div class="body" style="margin-top: 51px">
+
+<div class="container">
+	<p =id><%= notice %></p>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= render 'users/list', userpro: @user %>
+			<%= render 'books/list', booknew: @booknew %>
+		</div>
+<div class="col-xs-9">
+<h2>Books</h2>
+<table class="table table-hover table-inverse">
+
+	<thead>
+	<tr>
+		<th></th>
+		<th>Title</th>
+		<th>Opinion</th>
+		<th colspan="3"></th>
+	</tr>
+	</thead>
+	<tr>
+
+		<% @books.each do |book| %>
+				<td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"%></td>
+			<td><%= link_to book.title, book_path(book.id) %>
+			</td>
+		<td><%= book.body %></td>
+</tr>
+<% end %>
+</table>
+</div>
+
+
+	</div>
+</div>
+</div>
+
